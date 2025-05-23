@@ -1,5 +1,6 @@
 package UserService.controllers;
 
+import UserService.dtos.SetUserRolesRequestDto;
 import UserService.dtos.UserDto;
 import UserService.services.UserService;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,9 @@ public class UserController {
     }
 
     @PostMapping("/{id}/roles")
-    public ResponseEntity<UserDto> setUserRoles(@PathVariable("id") Long userId) {
+    public ResponseEntity<UserDto> setUserRoles(@PathVariable("id") Long userId, @RequestBody SetUserRolesRequestDto request) {
 
-        UserDto userDto = userService.setUserRoles(userId);
+        UserDto userDto = userService.setUserRoles(userId,request.getRoleIds());
 
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
