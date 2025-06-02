@@ -1,6 +1,7 @@
 package UserService.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.FetchType;
@@ -17,6 +18,7 @@ import java.util.Set;
 @Setter
 @JsonDeserialize(as = User.class)
 public class User extends BaseModel {
+    @Column(unique = true)
     private String email;
     private String password;
 
